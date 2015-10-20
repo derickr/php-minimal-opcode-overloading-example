@@ -68,11 +68,9 @@ PHP_MINIT_FUNCTION(opcode)
 
 	for (i = 0; i < 256; i++) {
 		if (zend_get_user_opcode_handler(i) == NULL) {
-#if ZTS
 			if (i == ZEND_HANDLE_EXCEPTION) {
 				continue;
 			}
-#endif
 			zend_set_user_opcode_handler(i, opcode_print_handler);
 		}
 	}
